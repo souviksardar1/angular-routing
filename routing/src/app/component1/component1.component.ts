@@ -12,8 +12,16 @@ export class Component1Component implements OnInit{
 constructor(private rtr : Router, private activatedR : ActivatedRoute){}
 
   ngOnInit(): void {
-    this.flag = this.activatedR.snapshot.queryParams['isDisabled'];
-    this.value = this.activatedR.snapshot.queryParams['ValueIs'];
+
+    this.activatedR.queryParams.subscribe(
+      (p : Params) => {
+        this.flag = p['isDisabled'];
+        this.value = p['ValueIs'];
+      }
+
+    );
+    // this.flag = this.activatedR.snapshot.queryParams['isDisabled'];
+    // this.value = this.activatedR.snapshot.queryParams['ValueIs'];
   }
 
 

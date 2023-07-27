@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark" *ngIf="loginSuccessful">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Routing of Angular</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -46,13 +46,39 @@
           (click) = "QueryParamsForComp1()">Query Params - From Code</a>
         </li>
   
+        <li class="nav-item">
+          <a style=" cursor: pointer;" class="nav-link" (click) = "logoutClicked()">
+            <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-logout-icon-png-image_4162877.jpg" style="height: 25px; padding-left: 260px;">
+          </a>
+        </li>
       </ul>
     </div>
+
+    <!-- <div class="logout" style="text-align: end;"> -->
+    
+      <!-- <a href="#">
+        <span class="glyphicon glyphicon-log-out" >
+          <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-logout-icon-png-image_4162877.jpg" class="img-fluid" alt="logout" style="height: 5%; width: 5%;">
+
+        </span>
+      </a> -->
+  <!-- </div> -->
+
   </div>
+  <!-- <div class="logout" style="text-align: end;">
+    
+      <a href="#">
+        <span class="glyphicon glyphicon-log-out" >
+          <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-vector-logout-icon-png-image_4162877.jpg" class="img-fluid" alt="logout" style="height: 5%; width: 5%;">
+
+        </span>
+      </a>
+  </div> -->
 </nav>
 
 <div class="container-fluid mt-3">
  <router-outlet></router-outlet>
+ <!-- <app-login></app-login> -->
 </div>
 
 </body>

@@ -1,18 +1,29 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AuthService } from './Services/auth.service';
+import { LoginStatusService } from './Services/login-communicator.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'routing';
   idddd = '90';
-
+  loginSuccessful = false;
   constructor(private r : Router
     ,private activeR : ActivatedRoute
+    // , private authSer : AuthService
+    , private statusServ : LoginStatusService
+    , private authSer : AuthService
     ){}
+  ngOnInit(): void {
+    this.statusServ.status.subscribe(
+      (d : boolean) =>{
+        this.loginSuccessful = d;
+      });
+  }
 
   NegivateToComp3(){
     this.r.navigate(['comp3']);
@@ -29,5 +40,9 @@ export class AppComponent {
     this.r.navigate(['comp1'] , {queryParams: {isDisabled: true, ValueIs : 'Suprava SInha'}, 
      fragment: 'Hashh'
   });
+  }
+
+  logoutClicked(){
+    this.authSer.logout();
   }
 }
